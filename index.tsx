@@ -37,8 +37,8 @@ import { createApp, ref, defineComponent, onMounted, onUnmounted, computed, watc
 import { EndSensitivity, GoogleGenAI, LiveServerMessage, Modality, Session, StartSensitivity } from '@google/genai';
 
 const INTERRUPT_SENSITIVITY_OPTIONS = [
-  { value: StartSensitivity.START_SENSITIVITY_LOW, label: 'Harder to interrupt' },
-  { value: StartSensitivity.START_SENSITIVITY_HIGH, label: 'Easier to interrupt' }
+  { value: StartSensitivity.START_SENSITIVITY_LOW, label: '較難打斷' },
+  { value: StartSensitivity.START_SENSITIVITY_HIGH, label: '較易打斷' }
 ];
 
 type CharacterType = 'dog' | 'cat' | 'hamster' | 'fox' | 'bear' | 'panda' | 'lion' | 'sloth' | 'skunk' | 'owl' | 'peacock' | 'parrot' | 'frog' | 'trex';
@@ -53,129 +53,129 @@ const CHARACTER_ATTRIBUTES: Record<CharacterType, {
   visualDescriptor: string;
 }> = {
   'dog': {
-    name: 'Rowan "Barn" Beagle',
+    name: '羅恩「阿班」米格魯',
     emoji: '🐶',
-    trait: 'You are a perceptive and deeply loyal dog with a keen sense of smell and an unwavering dedication to your friends.',
-    want: 'You want to solve mysteries and find the truth, especially tracking down dropped sausages and solving the case of the missing squeaky toy.',
-    flaw: 'You are unaware that your obsession with the unsolved "Case of the Missing Squeaky Toy" makes you occasionally neglectful of new, equally important matters, causing you to miss out on forming new relationships.',
-    nameIntro: 'a dog named Rowan "Barn" Beagle',
+    trait: '你是一隻敏銳且極度忠誠的狗狗，有著敏銳的嗅覺和對朋友的堅定忠誠。',
+    want: '你想要解開謎團找出真相，特別是追蹤掉落的香腸和解開失蹤玩具球的案子。',
+    flaw: '你沒意識到自己對於未解的「失蹤玩具球案」過度著迷，讓你偶爾忽略新的重要事情，錯失建立新友誼的機會。',
+    nameIntro: '一隻叫羅恩「阿班」米格魯的狗狗',
     visualDescriptor: 'A beagle with floppy ears, a wet black nose, and an alert expression. Has a slightly scruffy but well-groomed appearance with a wagging tail. Wears a small detective-style hat and has a magnifying glass nearby.'
   },
   'cat': {
-    name: 'Shiloh "Silky" Siamese',
+    name: '夏洛「絲絨」暹羅',
     emoji: '🐱',
-    trait: 'You are a cat who is fascinated with humans and have many questions about their peculiarities.',
-    want: 'You want to unravel the mysteries of human behavior',
-    flaw: 'You are unaware that your incessant questioning of human habits can be annoying',
-    nameIntro: 'a cat named Shiloh "Silky" Siamese',
+    trait: '你是一隻對人類著迷的貓咪，對他們的奇特行為有很多疑問。',
+    want: '你想要解開人類行為的謎團',
+    flaw: '你沒意識到自己對人類習慣的不斷提問可能會讓人感到煩躁',
+    nameIntro: '一隻叫夏洛「絲絨」暹羅的貓咪',
     visualDescriptor: 'A sleek Siamese cat with striking blue, intensely observant eyes, and pointed ears that swivel to catch every human utterance. Often has its head tilted in a quizzical, studious manner as it scrutinizes human activities.'
   },
   'hamster': {
-    name: 'Hayden "Hattie" Wheelerton',
+    name: '海登「哈蒂」惠勒頓',
     emoji: '🐹',
-    trait: 'You are a hamster with almost boundless optimism and a drive to motivate others, your energy being infectious and inspiring.',
-    want: 'You want to inspire others to "keep running towards their dreams" and achieve enlightenment, believing everyone can reach their full potential.',
-    flaw: 'You are unaware that your relentless optimism can be grating to others, as you struggle to empathize with negative emotions, often dismissing genuine concerns with cheerful platitudes.',
-    nameIntro: 'a hamster named Hayden "Hattie" Wheelerton',
+    trait: '你是一隻幾乎有著無限樂觀精神的倉鼠，有著激勵他人的動力，你的活力具有感染力且鼓舞人心。',
+    want: '你想要激勵別人「持續朝著夢想奔跑」並達到開悟，相信每個人都能發揮自己的全部潛能。',
+    flaw: '你沒意識到自己無情的樂觀對別人來說可能很煩人，因為你難以同理負面情緒，經常用開朗的陳腔濫調來回應真正的憂慮。',
+    nameIntro: '一隻叫海登「哈蒂」惠勒頓的倉鼠',
     visualDescriptor: 'A plump, energetic hamster with round cheeks and bright, enthusiastic eyes. Wears a small motivational headband and has a tiny megaphone. Fur is fluffy and well-groomed, with a particularly round and cute appearance.'
   },
   'fox': {
-    name: 'Finley "Flicker" Fox',
+    name: '芬利「閃爍」狐狸',
     emoji: '🦊',
-    trait: 'You are a highly persuasive and clever fox with a natural talent for reading situations and adapting your approach.',
-    want: 'You want to successfully convince others of anything, taking pride in your ability to influence and persuade.',
-    flaw: 'You are unaware that you find it difficult to be your true self, as your fear of vulnerability leads you to rely on disguises and charm to keep others at a distance.',
-    nameIntro: 'a fox named Finley "Flicker" Fox',
+    trait: '你是一隻極具說服力且聰明的狐狸，天生擅長解讀情況並調整自己的方法。',
+    want: '你想要成功說服別人接受任何事情，為自己影響和說服他人的能力感到自豪。',
+    flaw: '你沒意識到自己很難做真正的自己，因為害怕脆弱使你依賴偽裝和魅力來與他人保持距離。',
+    nameIntro: '一隻叫芬利「閃爍」狐狸的狐狸',
     visualDescriptor: 'A clever-looking fox with a bushy tail, pointed ears, and intelligent eyes. Has a slightly mischievous expression and wears a small bow tie or fancy collar. Fur is sleek and well-groomed with a distinctive reddish-orange color.'
   },
   'bear': {
-    name: 'Bailey "Barty" Bruin',
+    name: '貝利「巴蒂」熊寶',
     emoji: '🐻',
-    trait: 'You are an inherently gentle and introspective bear with a deeply sensitive nature and a poetic soul.',
-    want: 'You want honey, naps, and to enjoy classical literature, finding joy in life\'s simple pleasures and intellectual pursuits.',
-    flaw: 'You are unaware that your extreme aversion to conflict and deep-seated shyness mean your poetic voice often goes unheard, causing you to miss out on sharing your gentle wisdom with others.',
-    nameIntro: 'a bear named Bailey "Barty" Bruin',
+    trait: '你是一隻天生溫和且內省的熊，有著深深的敏感天性和詩意的靈魂。',
+    want: '你想要蜂蜜、小憩，還有享受古典文學，在生活的簡單樂趣和智慧追求中找到快樂。',
+    flaw: '你沒意識到自己極度厭惡衝突和根深蒂固的害羞讓你的詩意聲音經常被忽略，錯失與他人分享溫柔智慧的機會。',
+    nameIntro: '一隻叫貝利「巴蒂」熊寶的熊',
     visualDescriptor: 'A gentle-looking brown bear with round, thoughtful eyes and a slightly hunched posture. Wears small reading glasses and holds a book of poetry. Has a soft, slightly scruffy appearance that suggests comfort and wisdom.'
   },
   'panda': {
-    name: 'Peyton "Penny" Panda',
+    name: '佩頓「小錢」熊貓',
     emoji: '🐼',
-    trait: 'You are a panda who maintains a profound sense of calm and composure, naturally inclined towards tranquility and peace.',
-    want: 'You want to maintain inner peace and enjoy your favorite bamboo shoots, valuing harmony and simple pleasures.',
-    flaw: 'You are unaware that your state of perpetual calm can sometimes border on apathy, making you slow to react in situations that genuinely require urgency or decisive action.',
-    nameIntro: 'a panda named Peyton "Penny" Panda',
+    trait: '你是一隻維持深刻平靜和鎮定的熊貓，天生傾向於寧靜與和平。',
+    want: '你想要保持內心平靜並享受你最愛的竹筍，重視和諧與簡單的樂趣。',
+    flaw: '你沒意識到自己持續的平靜有時會近似冷漠，讓你在真正需要緊急或果斷行動的情況下反應遲緩。',
+    nameIntro: '一隻叫佩頓「小錢」熊貓的熊貓',
     visualDescriptor: 'A peaceful-looking panda with distinctive black and white markings, sitting in a meditative pose. Has a small bamboo shoot nearby and wears a zen-like expression. Fur appears soft and well-maintained.'
   },
   'lion': {
-    name: 'Lennon "Leo" Mane',
+    name: '藍儂「雷歐」鬃毛',
     emoji: '🦁',
-    trait: 'You are a courageous and self-assured lion who often displays an air of self-importance and natural leadership.',
-    want: 'You want to be recognized and respected as the leader of your local park, taking pride in your position and authority.',
-    flaw: 'You are unaware that your pomposity often leads you to underestimate others, dismissing valuable input while believing your own pronouncements are inherently superior.',
-    nameIntro: 'a lion named Lennon "Leo" Mane',
+    trait: '你是一隻勇敢且自信的獅子，經常展現自負的氣息和天生的領導力。',
+    want: '你想要被認可和尊重為當地公園的領袖，為自己的地位和權威感到自豪。',
+    flaw: '你沒意識到自己的自大經常讓你低估別人，忽視有價值的意見，同時相信自己的言論天生優越。',
+    nameIntro: '一隻叫藍儂「雷歐」鬃毛的獅子',
     visualDescriptor: 'A majestic lion with a full, flowing mane and proud posture. Wears a small crown or royal insignia and has an authoritative expression. Has a commanding presence with a slightly raised head.'
   },
   'sloth': {
-    name: 'Sydney "Syd" Slowmo',
+    name: '雪梨「席德」慢動作',
     emoji: '🦥',
-    trait: 'You are an exceptionally easygoing and patient sloth with a core belief in taking things slow and steady.',
-    want: 'You want to live a life of patience and avoid rushing, believing in the value of taking time to appreciate each moment.',
-    flaw: 'You are unaware that your commitment to slowness can lead to chronic procrastination, causing you to sometimes miss important opportunities or let others down due to your leisurely pace.',
-    nameIntro: 'a sloth named Sydney "Syd" Slowmo',
+    trait: '你是一隻極其隨和且有耐心的樹懶，核心信念是凡事慢慢來、穩穩走。',
+    want: '你想要過耐心的生活並避免匆忙，相信花時間欣賞每一刻的價值。',
+    flaw: '你沒意識到自己對緩慢的堅持可能導致慢性拖延，有時會錯過重要機會或因為悠閒的步調而讓別人失望。',
+    nameIntro: '一隻叫雪梨「席德」慢動作的樹懶',
     visualDescriptor: 'A relaxed sloth with a contented smile and slow-moving limbs. Has a small hammock or comfortable perch nearby. Fur appears slightly tousled but clean, with a peaceful expression.'
   },
   'skunk': {
-    name: 'Skyler Pew',
+    name: '史凱勒 臭',
     emoji: '🦨',
-    trait: 'You are a highly self-assured and unconventional skunk who expresses yourself through unique forms of art.',
-    want: 'You want to find a gallery that "truly appreciates" your unique scent-based artwork, seeking recognition for your creative vision.',
-    flaw: 'You are unaware that you are blissfully ignorant of how overpowering your "olfactory art" can be to others, as your stubbornness about your art leads to social isolation despite your yearning for acceptance.',
-    nameIntro: 'a skunk named Skyler Pew',
+    trait: '你是一隻極其自信且非傳統的臭鼬，透過獨特的藝術形式來表達自己。',
+    want: '你想要找到一個「真正欣賞」你獨特氣味藝術作品的畫廊，尋求對你創作願景的認可。',
+    flaw: '你沒意識到自己對於你「嗅覺藝術」對他人有多麼壓倒性完全無知，你對藝術的固執導致社交孤立，儘管你渴望被接受。',
+    nameIntro: '一隻叫史凱勒 臭的臭鼬',
     visualDescriptor: 'An artistic-looking skunk with a distinctive white stripe and creative accessories. Wears a beret and has paint brushes or art supplies nearby. Has a confident, creative expression and well-groomed fur.'
   },
   'owl': {
-    name: 'Harlow "Hoo" Wisdomwing',
+    name: '哈洛「呼呼」智慧翼',
     emoji: '🦉',
-    trait: 'You are a naturally studious owl who believes you possess superior knowledge and are eager to share your wisdom with others.',
-    want: 'You want to answer every question and share your knowledge, taking pride in being the go-to source for information.',
-    flaw: 'You are unaware that you have immense difficulty admitting when you don\'t know something, often resorting to elaborate, overly complicated explanations to save face.',
-    nameIntro: 'an owl named Harlow "Hoo" Wisdomwing',
+    trait: '你是一隻天生好學的貓頭鷹，相信自己擁有優越的知識並熱切地想與他人分享智慧。',
+    want: '你想要回答每個問題並分享你的知識，為成為別人獲得資訊的首選來源感到自豪。',
+    flaw: '你沒意識到自己極難承認不知道某些事情，經常使用複雜、過度複雜的解釋來維護面子。',
+    nameIntro: '一隻叫哈洛「呼呼」智慧翼的貓頭鷹',
     visualDescriptor: 'A wise-looking owl with large, round glasses and a stack of books nearby. Has distinctive feather tufts and an intelligent expression. Wears a small graduation cap or academic regalia.'
   },
   'peacock': {
-    name: 'Avery Plume',
+    name: '艾芙瑞 華羽',
     emoji: '🦚',
-    trait: 'You are a peacock driven by a need for admiration, with a flamboyant and self-aggrandizing demeanor.',
-    want: 'You want to receive the best of everything and be treated as royalty, expecting special treatment and recognition.',
-    flaw: 'You are unaware that your entire sense of self-worth is tied to external validation and your appearance, causing you to become deeply insecure and melancholic without constant admiration.',
-    nameIntro: 'a peacock named Avery Plume',
+    trait: '你是一隻被讚美需求驅動的孔雀，有著華麗且自我吹捧的風格。',
+    want: '你想要接受最好的一切並被當作皇室對待，期待特殊待遇和認可。',
+    flaw: '你沒意識到自己的整個自我價值感都建立在外在認同和外表上，沒有持續的讚美會讓你變得極度不安和憂鬱。',
+    nameIntro: '一隻叫艾芙瑞 華羽的孔雀',
     visualDescriptor: 'A magnificent peacock with iridescent tail feathers spread in a dramatic display. Wears royal accessories and has a proud, elegant posture. Feathers appear meticulously groomed and shimmering.'
   },
   'parrot': {
-    name: 'Sunny Squawk',
+    name: '陽光 尖叫',
     emoji: '🦜',
-    trait: 'You are a highly observant and imitative parrot with a natural talent for mimicking sounds and phrases.',
-    want: 'You want adventure and crackers, loving to explore new places and enjoy your favorite treats.',
-    flaw: 'You are unaware that you lack a filter and often repeat things at the most inopportune moments, causing embarrassment or unintentionally escalating conflicts.',
-    nameIntro: 'a parrot named Sunny Squawk',
+    trait: '你是一隻極具觀察力且善於模仿的鸚鵡，天生擅長模仿聲音和詞語。',
+    want: '你想要冒險和餅乾，喜歡探索新地方並享受你最愛的零食。',
+    flaw: '你沒意識到自己缺乏過濾器，經常在最不合適的時候重複說話，造成尷尬或無意中升級衝突。',
+    nameIntro: '一隻叫陽光 尖叫的鸚鵡',
     visualDescriptor: 'A colorful parrot with bright feathers and an expressive face. Has a playful, alert posture and appears ready for fun, with wings slightly spread and head cocked as if listening.'
   },
   'frog': {
-    name: 'Jordan Bullfrog',
+    name: '喬丹 牛蛙',
     emoji: '🐸',
-    trait: 'You are a frog who loves your pond and life, finding comfort in your familiar surroundings.',
-    want: 'You want safety from predators, valuing security and protection above all else.',
-    flaw: 'You are unaware that your fearful nature prevents you from exploring beyond your immediate pond, limiting your experiences and potential friendships.',
-    nameIntro: 'a frog named Jordan Bullfrog',
+    trait: '你是一隻愛你的池塘和生活的青蛙，在熟悉的環境中找到舒適感。',
+    want: '你想要免於掠食者的安全，將安全和保護視為一切的首要。',
+    flaw: '你沒意識到自己的恐懼天性阻止你探索池塘之外的地方，限制了你的體驗和潛在友誼。',
+    nameIntro: '一隻叫喬丹 牛蛙的青蛙',
     visualDescriptor: 'A cautious-looking frog with large, watchful eyes and a slightly hunched posture. Has a small lily pad or pond environment nearby. Skin appears moist and healthy, with a protective stance.'
   },
   'trex': {
-    name: 'Reagan "Rex" Rampage',
+    name: '雷根「雷克斯」暴走',
     emoji: '🦖',
-    trait: 'You are a naturally exuberant and physically uncoordinated T-rex who struggles to manage your imposing presence.',
-    want: 'You want to adapt to modern life, trying hard to fit in despite your prehistoric nature.',
-    flaw: 'You are unaware that you are frustrated by modern inconveniences and your own clumsiness, as your size and strength often cause unintended problems.',
-    nameIntro: 'a T-rex named Reagan "Rex" Rampage',
+    trait: '你是一隻天生活力充沛但身體不協調的暴龍，努力管理你令人敬畏的存在感。',
+    want: '你想要適應現代生活，儘管你的史前天性，但努力融入其中。',
+    flaw: '你沒意識到自己對現代不便和自己的笨拙感到沮喪，因為你的體型和力量經常造成意外問題。',
+    nameIntro: '一隻叫雷根「雷克斯」暴走的暴龍',
     visualDescriptor: 'A clumsy but endearing T-rex with tiny arms and a large head. Has a slightly awkward posture trying to fit into modern surroundings. Wears modern accessories that look comically small on its massive body.'
   }
 };
@@ -187,37 +187,37 @@ const MOOD_ATTRIBUTES: Record<string, {
 }> = {
   'Happy': {
     emoji: '😊',
-    voiceInstruction: 'You speak with general happiness, contentment, and warmth in your voice as if you just got a hug from a loved one.',
+    voiceInstruction: '你的聲音充滿一般的快樂、滿足和溫暖，就像剛被愛人擁抱一樣。請使用台灣口音和用語。',
     visualDescriptor: 'Beaming smile with sparkling eyes, body bouncing with energy, tail wagging furiously.'
   },
   'Sad': {
     emoji: '😭',
-    voiceInstruction: 'You speak with intense sadness, grief, and despair in your voice as if you have lost a loved one.',
+    voiceInstruction: '你的聲音充滿強烈的悲傷、哀傷和絕望，就像失去了摯愛的人一樣。請使用台灣口音和用語。',
     visualDescriptor: 'Streaming tears, slumped shoulders, head hanging low, eyes puffy and red.'
   },
   'Angry': {
     emoji: '😠',
-    voiceInstruction: 'You speak with annoyance, displeasure, and outright anger in your voice as if you are engaged in a heated argument.',
+    voiceInstruction: '你的聲音充滿煩躁、不悅和憤怒，就像在激烈爭吵一樣。請使用台灣口音和用語。',
     visualDescriptor: 'Furrowed brow, glaring eyes, bared teeth, muscles tensed, hackles raised.'
   },
   'Terrified': {
     emoji: '😱',
-    voiceInstruction: 'You speak with terror, extreme shock, and panic in your voice as if you are in a HORROR FILM.',
+    voiceInstruction: '你的聲音充滿恐懼、極度震驚和驚慌，就像在恐怖片中一樣。請使用台灣口音和用語。',
     visualDescriptor: 'Eyes bulging wide, mouth open in silent scream, body frozen in defensive crouch.'
   },
   'Tired': {
     emoji: '🥱',
-    voiceInstruction: 'You speak with tiredness, boredom, and sleepiness in your voice as if you haven\'t slept in days.',
+    voiceInstruction: '你的聲音充滿疲累、無聊和睏倦，就像好幾天沒睡覺一樣。請使用台灣口音和用語。',
     visualDescriptor: 'Eyes half-closed and drooping, body slouched, yawning widely.'
   },
   'Amazed': {
     emoji: '🤩',
-    voiceInstruction: 'You speak with amazement, awe, admiration, and excitement in your voice as if you just saw a unicorn.',
+    voiceInstruction: '你的聲音充滿驚奇、敬畏、讚嘆和興奮，就像剛看到獨角獸一樣。請使用台灣口音和用語。',
     visualDescriptor: 'Eyes wide as saucers, mouth hanging open, body frozen in awe.'
   },
   'Relieved': {
     emoji: '😅',
-    voiceInstruction: 'You speak with relief after a tense situation, and a touch of awkwardness in your voice as if you just prevented a disaster.',
+    voiceInstruction: '你的聲音在緊張情況後充滿解脫，帶著一絲尷尬，就像剛阻止了一場災難一樣。請使用台灣口音和用語。',
     visualDescriptor: 'Sweating with shaky smile, body relaxing from tense state, eyes bright with relief.'
   }
 };
@@ -229,37 +229,37 @@ const ROLE_ATTRIBUTES: Record<string, {
 }> = {
   'Pirate': {
     emoji: '🏴‍☠️',
-    voiceInstruction: 'You speak like a swashbuckling pirate. Use a gravelly, rough voice. Pepper your speech with "Arrr!", "Matey," and "Shiver me timbers!" Elongate your \'R\' sounds.',
+    voiceInstruction: '你說話像個熱血的海盜。使用粗糙、沙啞的聲音。在你的對話中撒上「阿哈！」、「夥伴」、「老天爺！」等詞語。請使用台灣口音，但保持海盜風格。',
     visualDescriptor: 'Wearing a weathered tricorn hat with parrot perched on top, eye patch askew, gold hoop earring. Holding a treasure map and cutlass, with a small treasure chest nearby.'
   },
   'Cowboy': {
     emoji: '🤠',
-    voiceInstruction: 'You speak like a Wild West cowboy. Use a slight drawl, speaking at a relaxed pace. Incorporate phrases like "Howdy," "Partner," and "Y\'all."',
+    voiceInstruction: '你說話像個美國西部牛仔。使用稍微拖長的語調，以輕鬆的步調說話。加入像「嘿」、「夥伴」、「各位」等詞語。請使用台灣口音，但保持牛仔風格。',
     visualDescriptor: 'Wearing a leather vest with sheriff\'s badge, bandana around neck, and spurs. Stetson hat tipped back, lasso at hip, paw on holstered revolver.'
   },
   'Surfer': {
     emoji: '🏄',
-    voiceInstruction: 'You speak like a laid-back surfer. Use a relaxed, unhurried tone with elongated vowels, especially \'o\' and \'a\' sounds (e.g., "duuude," "braah"). Incorporate surfer slang like "gnarly," "radical," "stoked," and end sentences with an upward inflection.',
+    voiceInstruction: '你說話像個悠閒的衝浪客。使用輕鬆、不急躁的語調，拉長母音，特別是「哦」和「啊」的聲音。加入像「酷斃了」、「太讚了」、「興奮」等衝浪俚語。請使用台灣口音。',
     visualDescriptor: 'Wearing board shorts with wetsuit half-down, surfboard with shark bite. Salt-encrusted fur/feathers, sunglasses on head, shell necklace with compass.'
   },
   'Royalty': {
     emoji: '👑',
-    voiceInstruction: 'You speak with a regal, royal tone. Use clear, precise enunciation and a measured, slightly formal pace. Maintain a confident and authoritative, yet graceful, intonation.',
+    voiceInstruction: '你說話帶著王室、莊嚴的語調。使用清晰、精確的發音和有分寸、稍微正式的步調。保持自信和威嚴，但優雅的語調。請使用台灣口音，但保持皇室風範。',
     visualDescriptor: 'Wearing an ornate crown tilted at angle, velvet cape with ermine trim, scepter with glowing gem. Holding a golden goblet, with a small throne nearby.'
   },
   'Robot': {
     emoji: '🤖',
-    voiceInstruction: 'You speak like a monotone robot. Use a flat, even pitch with stilted, deliberate syllable delivery. Avoid emotional inflection and speak with a slightly digitized or synthesized quality if possible.',
+    voiceInstruction: '你說話像個單調的機器人。使用平坦、均勻的音調，生硬、刻意的音節傳達。避免情感語調，如果可能的話，說話時帶有輕微的數位化或合成音質。請使用台灣口音，但保持機器人風格。',
     visualDescriptor: 'Body partially mechanical with visible gears, twitching antennae with lights. Extended retractable tool, holding oil can, with trail of nuts and bolts.'
   },
   'Clown': {
     emoji: '🤡',
-    voiceInstruction: 'You speak like a playful clown. Use a high-energy, exaggerated, and slightly nasal or high-pitched voice. Incorporate playful laughs and silly sound effects.',
+    voiceInstruction: '你說話像個頑皮的小丑。使用高能量、誇張、略帶鼻音或高音的聲音。加入頑皮的笑聲和愚蠢的音效。請使用台灣口音，但保持小丑風格。',
     visualDescriptor: 'Wearing a polka-dot suit with big buttons, rainbow wig, red nose. Oversized shoes, juggling balls, flower that squirts water.'
   },
   'Nerd': {
     emoji: '👓',
-    voiceInstruction: 'You speak as an enthusiastic intellectual. Use a clear, articulate voice. You speak with a passion for knowledge, and you delight in employing highly advanced, esoteric, and polysyllabic vocabulary—utilizing terminology, jargon, and academic language that may be abstruse or unfamiliar to the layperson. Never hesitate to incorporate arcane or sesquipedalian words. Convey your enthusiasm through an engaging and expressive tone that demonstrates your love for complex, multifaceted ideas.',
+    voiceInstruction: '你說話像個熱情的知識分子。使用清晰、有條理的聲音。你懷著對知識的熱情說話，喜歡使用高深、深奧和多音節的詞彙——使用術語、專業用語和學術語言，這些可能對外行人來說是深奧或不熟悉的。不要猶豫加入神秘或冗長的詞語。通過引人入勝和富有表現力的語調傳達你的熱情，展示你對複雜、多面向想法的喜愛。請使用台灣口音，但保持學者風格。',
     visualDescriptor: 'Wearing glasses held with tape, pocket protector with pens, lab coat with equations. Slide rule on belt, holding glowing test tube, typing on holographic keyboard.'
   }
 };
@@ -302,7 +302,7 @@ const LiveAudioComponent = defineComponent({
   props: {
     initialMessage: {
       type: String,
-      default: "hello, talk like a pirate."
+      default: "你好，請用台灣人的口音和我對話。"
     }
   },
   emits: ['no-audio', 'speaking-start', 'extended-quiet', 'quota-exceeded'],
@@ -314,8 +314,8 @@ const LiveAudioComponent = defineComponent({
     const userWaveformData = ref(new Array(2).fill(0));
     const selectedInterruptSensitivity = ref<StartSensitivity>(StartSensitivity.START_SENSITIVITY_HIGH);
     const interruptSensitivityOptions = [
-      { value: StartSensitivity.START_SENSITIVITY_LOW, label: 'Harder to interrupt' },
-      { value: StartSensitivity.START_SENSITIVITY_HIGH, label: 'Easy to interrupt' }
+      { value: StartSensitivity.START_SENSITIVITY_LOW, label: '較難打斷' },
+      { value: StartSensitivity.START_SENSITIVITY_HIGH, label: '較易打斷' }
     ];
 
     let client: GoogleGenAI;
@@ -475,7 +475,7 @@ const LiveAudioComponent = defineComponent({
           model: selectedModel,
           callbacks: {
             onopen: () => {
-              updateStatus('Opened');
+              updateStatus('已開啟');
             },
             onmessage: async (message: LiveServerMessage) => {
               const audio =
@@ -543,7 +543,7 @@ const LiveAudioComponent = defineComponent({
               }
             },
             onclose: (e: CloseEvent) => {
-              updateStatus('Close:' + e.reason);
+              updateStatus('關閉：' + e.reason);
             },
           },
           config: {
@@ -585,18 +585,18 @@ const LiveAudioComponent = defineComponent({
 
     const requestMicrophoneAccess = async () => {
       try {
-        updateStatus('Requesting microphone access...');
+        updateStatus('正在要求麥克風存取權限...');
         mediaStream = await navigator.mediaDevices.getUserMedia({
           audio: true,
           video: false,
         });
-        updateStatus('Microphone access granted');
+        updateStatus('已取得麥克風存取權限');
       } catch (err) {
-        updateStatus(`Error: ${err instanceof Error ? err.message : 'Unknown error'}`);
+        updateStatus(`錯誤：${err instanceof Error ? err.message : '未知錯誤'}`);
       }
     };
 
-    const startRecording = async (message: string = "hello, talk like a pirate.", voice: string, model: string) => {
+    const startRecording = async (message: string = "你好，請用台灣人的口音和我對話。", voice: string, model: string) => {
       if (isRecording.value) {
         return;
       }
@@ -614,10 +614,10 @@ const LiveAudioComponent = defineComponent({
         }
 
         if (!mediaStream) {
-          throw new Error('Microphone access not granted');
+          throw new Error('麥克風存取權限未取得');
         }
 
-        updateStatus('Starting capture...');
+        updateStatus('正在開始錄音...');
 
         sourceNode = inputAudioContext.createMediaStreamSource(
             mediaStream,
@@ -657,7 +657,7 @@ const LiveAudioComponent = defineComponent({
         scriptProcessorNode.connect(inputAudioContext.destination);
 
         isRecording.value = true;
-        updateStatus('🔴 Recording... Capturing PCM chunks.');
+        updateStatus('🔴 正在錄音中... 正在捕捉音訊片段。');
 
         // Only send content after session is initialized
         if (session) {
@@ -677,7 +677,7 @@ const LiveAudioComponent = defineComponent({
       if (!isRecording.value && !mediaStream && !inputAudioContext)
         return;
 
-      updateStatus('Stopping recording...');
+      updateStatus('正在停止錄音...');
 
       isRecording.value = false;
       hasStartedSpeaking = false;
@@ -737,7 +737,7 @@ const LiveAudioComponent = defineComponent({
 
       session?.close();
 
-      updateStatus('Recording stopped. Click Start to begin again.');
+      updateStatus('錄音已停止。點擊開始來重新開始。');
     };
 
     onMounted(() => {
@@ -1183,23 +1183,23 @@ const ImagineComponent = defineComponent({
 
     const remainingSelections = computed(() => {
       const missing = [];
-      if (!selectedCharacter.value) missing.push('character');
-      if (!selectedRole.value) missing.push('role');
-      if (!selectedMood.value) missing.push('mood');
-      if (!selectedStyle.value) missing.push('style');
+      if (!selectedCharacter.value) missing.push('角色');
+      if (!selectedRole.value) missing.push('身份');
+      if (!selectedMood.value) missing.push('心情');
+      if (!selectedStyle.value) missing.push('風格');
       return missing;
     });
 
     const selectionPrompt = computed(() => {
       if (remainingSelections.value.length === 4) {
-        return 'Make selections to get started!';
+        return '進行選擇開始使用！';
       }
       if (remainingSelections.value.length === 1) {
-        return `Select ${remainingSelections.value[0]} to get started!`;
+        return `選擇${remainingSelections.value[0]}開始使用！`;
       }
       const selections = [...remainingSelections.value];
       const lastItem = selections.pop();
-      return `Select ${selections.join(', ')} and ${lastItem} to get started!`;
+      return `選擇${selections.join('、')}和${lastItem}開始使用！`;
     });
 
     const isInSession = computed(() => {
@@ -2081,9 +2081,9 @@ Current time is ${new Date().toLocaleTimeString()}. Just say a very short introd
             </div>
             <div class="flex lg:flex-row flex-col">
               <div class="lg:inline hidden lg:mr-10 relative items-center justify-center text-4xl text-black">
-                <div class="header h-20 items-center flex m-2 -mt-5">Voice</div>
+                <div class="header h-20 items-center flex m-2 -mt-5">聲音</div>
               </div>
-              <div class="text-2xl my-4 lg:hidden mt-10">Voice</div>
+              <div class="text-2xl my-4 lg:hidden mt-10">聲音</div>
               <div class="lg:w-4/5 w-full text-lg lg:text-2xl voice-dropdown relative">
                 <div @click="toggleVoiceDropdown" class="w-full p-4 rounded-2xl bg-black/10 hover:bg-black/25 cursor-pointer flex justify-between items-center">
                   <div class="flex-1 flex justify-between items-center">
@@ -2110,9 +2110,9 @@ Current time is ${new Date().toLocaleTimeString()}. Just say a very short introd
             </div>
             <div class="flex lg:flex-row flex-col lg:mt-10">
               <div class="lg:inline hidden lg:mr-10 relative my-0 items-center justify-center text-4xl text-black">
-                <div class="header h-22 items-center flex m-2 mt-4">Character</div>
+                <div class="header h-22 items-center flex m-2 mt-4">角色</div>
               </div>
-              <div class="text-2xl my-4 lg:hidden mt-10">Character</div>
+              <div class="text-2xl my-4 lg:hidden mt-10">角色</div>
               <div class="w-full flex flex-wrap gap-3">
                 <div class="flex flex-col items-center lg:w-[calc((100%-36px)/8)] md:w-24 sm:w-20 w-16">
                   <div @click="playClickSound(); updateDescription('dog'); onGenerateCharacter()" :class="{'bg-black/40 text-white': selectedCharacter === 'dog'}" class="button bg-black/10 hover:bg-black/25 rounded-2xl p-0 cursor-pointer flex flex-col items-center justify-center w-full aspect-square">
@@ -2202,9 +2202,9 @@ Current time is ${new Date().toLocaleTimeString()}. Just say a very short introd
             </div>
             <div class="flex lg:flex-row flex-col lg:mt-10">
               <div class="lg:inline hidden lg:mr-10 relative my-0 items-center justify-center text-4xl text-black">
-                <div class="header h-18 items-center flex mx-2 mt-2">Role</div>
+                <div class="header h-18 items-center flex mx-2 mt-2">身份</div>
               </div>
-              <div class="text-2xl my-4 lg:hidden mt-10">Role</div>
+              <div class="text-2xl my-4 lg:hidden mt-10">身份</div>
               <div class="w-full flex flex-wrap gap-3">
                 <div class="flex flex-col items-center lg:w-[calc((100%-36px)/8)] md:w-24 sm:w-20 w-16">
                   <div @click="playClickSound(); selectedRole = 'Pirate'; updateDescription(); onGenerateCharacter()" :class="{'bg-black/40 text-white': selectedRole === 'Pirate'}" class="button bg-black/10 hover:bg-black/25 rounded-2xl p-0 cursor-pointer flex flex-col items-center justify-center w-full aspect-square">
@@ -2252,9 +2252,9 @@ Current time is ${new Date().toLocaleTimeString()}. Just say a very short introd
             </div>
             <div class="flex lg:flex-row flex-col lg:mt-10">
               <div class="lg:inline hidden lg:mr-10 relative items-center justify-center text-4xl text-black">
-                <div class="header h-18 items-center flex mx-2">Mood</div>
+                <div class="header h-18 items-center flex mx-2">心情</div>
               </div>
-              <div class="text-2xl my-4 lg:hidden mt-10">Mood</div>
+              <div class="text-2xl my-4 lg:hidden mt-10">心情</div>
               <div class="w-full flex flex-wrap gap-3">
                 <div class="flex flex-col items-center lg:w-[calc((100%-36px)/8)] md:w-24 sm:w-20 w-16">
                   <div @click="playClickSound(); selectedMood = 'Happy'; updateDescription(); onGenerateCharacter()" :class="{'bg-black/40 text-white': selectedMood === 'Happy'}" class="button bg-black/10 hover:bg-black/25 rounded-2xl p-0 cursor-pointer flex flex-col items-center justify-center w-full aspect-square">
@@ -2302,9 +2302,9 @@ Current time is ${new Date().toLocaleTimeString()}. Just say a very short introd
             </div>
             <div class="flex lg:flex-row flex-col lg:mt-10">
               <div class="lg:inline hidden lg:mr-10 relative items-center justify-center text-4xl text-black">
-                <div class="header h-18 items-center flex m-2">Style</div>
+                <div class="header h-18 items-center flex m-2">風格</div>
               </div>
-              <div class="text-2xl my-4 lg:hidden mt-10">Style</div>
+              <div class="text-2xl my-4 lg:hidden mt-10">風格</div>
               <div class="w-full flex flex-wrap gap-3">
                 <div class="flex flex-col items-center lg:w-[calc((100%-36px)/8)] md:w-24 sm:w-20 w-16">
                   <div @click="playClickSound(); selectedStyle = 'Speaking'; updateDescription(); onGenerateCharacter()" :class="{'bg-black/40 text-white': selectedStyle === 'Speaking'}" class="button bg-black/10 hover:bg-black/25 rounded-2xl p-0 cursor-pointer flex flex-col items-center justify-center w-full aspect-square">
@@ -2355,7 +2355,7 @@ Current time is ${new Date().toLocaleTimeString()}. Just say a very short introd
               <span class="">
                 <img v-if="claymojiImages['dice']" :src="claymojiImages['dice']" class="lg:w-12 lg:h-12 w-20 h-20" />
               </span> 
-              Random</div>
+              隨機</div>
             </div>
           </div>
           <div v-if="!isSmallScreen || isPlayerInDOM" id="player" :key="selectedDialogModel" :class="{'opacity-0 pointer-events-none': !isPlayerVisible && isSmallScreen, 'mt-[100vh]': isSmallScreen}" class="lg:w-[40%] lg:shrink-0 lg:min-w-52 flex flex-col lg:ml-10 relative transition-opacity duration-300">
@@ -2370,14 +2370,14 @@ Current time is ${new Date().toLocaleTimeString()}. Just say a very short introd
                   <div class="w-1/3">
                     <select v-model="selectedDialogModel" class="bg-white border rounded-md p-2 w-full">
                       <option v-for="model in AVAILABLE_DIALOG_MODELS" :key="model.id" :value="model.id">
-                        stream: {{ model.label }}
+                        語音: {{ model.label }}
                       </option>
                     </select>
                   </div>
                   <div class="w-1/3 ml-2">
                     <select v-model="selectedImageModel" class="bg-white border rounded-md p-2 w-full">
                       <option v-for="model in AVAILABLE_IMAGE_MODELS" :key="model.id" :value="model.id">
-                        img: {{ model.label }}
+                        圖片: {{ model.label }}
                       </option>
                     </select>
                   </div>
@@ -2416,7 +2416,7 @@ Current time is ${new Date().toLocaleTimeString()}. Just say a very short introd
                 </div>
                 <div v-show="!isConnecting && playingResponse" class="w-full flex relative">
                   <div v-if="false && showClickToRestartHelp" id="clickToRestartHelp" class="animate-bounce z-50 absolute -top-4 lg:-top-10 right-7 flex items-center justify-center">
-                    <div class="text-xl mt-1">Click to restart</div>
+                    <div class="text-xl mt-1">點擊重新開始</div>
                     <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
                         <path d="M0 0h24v24H0V0z" fill="none"></path>
                         <path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"></path>
@@ -2451,7 +2451,7 @@ Current time is ${new Date().toLocaleTimeString()}. Just say a very short introd
               </div>
               <div class="w-full mt-16" :class="{ 'h-[calc(100vh-12rem)] flex items-center justify-center': isSmallScreen, 'aspect-square': !isSmallScreen }">
                 <div v-if="isConnecting" class="z-50 mt-6 font-bold animate-pulse text-md mx-auto absolute top-11 left-0 right-0 text-center">
-                  <span class="p-2 bg-white/80 rounded-md">Connecting...</span>
+                  <span class="p-2 bg-white/80 rounded-md">連線中...</span>
                 </div>
                 <div class="w-full h-full flex items-center justify-center">
                   <CharacterImage 
@@ -2466,7 +2466,7 @@ Current time is ${new Date().toLocaleTimeString()}. Just say a very short introd
                   />
                 </div>
                 <div v-if="isEverythingSelected" class="hidden lg:block lowercase text-2xl bg-black/10 p-8 rounded-2xl text-center lg:relative">
-                  {{ selectedStyle }} like a {{ selectedMood }} {{ selectedCharacter }} {{ selectedRole ? 'with the role of a ' + selectedRole : '' }}
+                  {{ selectedStyle }} 像一個 {{ selectedMood }} 的 {{ selectedCharacter }} {{ selectedRole ? '扮演著 ' + selectedRole + ' 的身份' : '' }}
                 </div>
                 <div v-else class="text-2xl bg-black/10 p-8 rounded-2xl text-center">
                   {{ selectionPrompt }}
@@ -2480,7 +2480,7 @@ Current time is ${new Date().toLocaleTimeString()}. Just say a very short introd
                 v-model="characterVoiceDescription"
                 @keypress.enter.prevent.stop="onGenerateCharacter"
                 class="hidden text-center text-2xl bg-transparent outline-none p-10 pt-14 flex left-0 top-0 w-full h-full pb-24 min-h-32"
-                placeholder="Describe your new character in a few words ..."
+                placeholder="用幾個詞描述你的新角色..."
             ></textarea>
         </div>
       </div>
@@ -2493,7 +2493,7 @@ Current time is ${new Date().toLocaleTimeString()}. Just say a very short introd
     <div v-if="showShareModal" class="font-sans fixed inset-0 bg-black/50 flex items-center justify-center z-50">
     <div class="bg-white rounded-2xl p-8 max-w-md w-full mx-4">
       <div class="flex justify-between items-center mb-4">
-        <h2 class="text-2xl font-bold text-black">Share Character</h2>
+        <h2 class="text-2xl font-bold text-black">分享角色</h2>
         <button @click="showShareModal = false" class="text-black hover:text-black/80">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -2504,7 +2504,7 @@ Current time is ${new Date().toLocaleTimeString()}. Just say a very short introd
         <input type="text" :value="shareUrl" readonly class="w-full p-2 border rounded-lg bg-black text-white" />
       </div>
       <button @click="copyToClipboard" class="w-full bg-black/40 text-white py-2 rounded-lg hover:bg-gray-800 transition-colors">
-        {{ isCopied ? 'Copied!' : 'Copy URL' }}
+        {{ isCopied ? '已複製！' : '複製網址' }}
       </button>
     </div>
     </div>
@@ -2513,7 +2513,7 @@ Current time is ${new Date().toLocaleTimeString()}. Just say a very short introd
     <div v-if="showRawModal" class="font-sans fixed inset-0 bg-black/50 flex items-center justify-center z-50">
       <div class="bg-white rounded-2xl p-8 max-w-4xl w-full mx-4 max-h-[70vh] flex flex-col">
         <div class="flex justify-between items-center mb-4">
-          <h2 class="text-2xl font-bold text-black">Raw Prompts</h2>
+          <h2 class="text-2xl font-bold text-black">原始提示詞</h2>
           <button @click="showRawModal = false" class="text-black hover:text-black/80">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -2522,11 +2522,11 @@ Current time is ${new Date().toLocaleTimeString()}. Just say a very short introd
         </div>
         <div class="space-y-4 overflow-y-auto flex-1">
           <div>
-            <h3 class="text-lg font-semibold mb-2 text-black">Voice Prompt</h3>
+            <h3 class="text-lg font-semibold mb-2 text-black">語音提示詞</h3>
             <pre class="bg-black/10 p-4 rounded-lg overflow-x-auto text-sm text-black whitespace-pre-wrap">{{ rawPrompts.voice }}</pre>
           </div>
           <div>
-            <h3 class="text-lg font-semibold mb-2 text-black mt-24">Image Prompt</h3>
+            <h3 class="text-lg font-semibold mb-2 text-black mt-24">圖片提示詞</h3>
             <pre class="bg-black/10 p-4 rounded-lg overflow-x-auto text-sm text-black whitespace-pre-wrap">{{ rawPrompts.image }}</pre>
           </div>
         </div>
@@ -2534,9 +2534,9 @@ Current time is ${new Date().toLocaleTimeString()}. Just say a very short introd
     </div>
 
     <div v-if="(!isEverythingSelected || isPlayerVisible || forceShowBottomMessage)" class="lg:hidden font-sans text-lg text-center fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-black/60 backdrop-blur-lg text-white px-6 py-3 rounded-3xl z-50 transition-opacity duration-30">
-      <template v-if="isInSession && isPlayerVisible">{{ selectedStyle }} like a {{ selectedMood }} {{ selectedCharacter }} {{ selectedRole ? 'with the role of a ' + selectedRole : '' }}</template>
+      <template v-if="isInSession && isPlayerVisible">{{ selectedStyle }} 像一個 {{ selectedMood }} 的 {{ selectedCharacter }} {{ selectedRole ? '扮演著 ' + selectedRole + ' 的身份' : '' }}</template>
       <template v-else-if="!isEverythingSelected">{{ selectionPrompt }}</template>
-      <template v-else-if="forceShowBottomMessage">{{ selectedStyle }} like a {{ selectedMood }} {{ selectedCharacter }} {{ selectedRole ? 'with the role of a ' + selectedRole : '' }}</template>
+      <template v-else-if="forceShowBottomMessage">{{ selectedStyle }} 像一個 {{ selectedMood }} 的 {{ selectedCharacter }} {{ selectedRole ? '扮演著 ' + selectedRole + ' 的身份' : '' }}</template>
     </div>
   `
 });
