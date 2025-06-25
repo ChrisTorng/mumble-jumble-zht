@@ -10,11 +10,11 @@
   },
   "dependencies": {
     "vue": "3",
-    "@google/genai": "^0.9.0",
-    "react": "^19.1.0"
+    "@google/genai": "^0.9.0"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
+    "@vitejs/plugin-vue": "^5.0.0",
     "typescript": "~5.7.2",
     "vite": "^6.2.0"
   }
