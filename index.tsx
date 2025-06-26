@@ -1177,6 +1177,66 @@ const ImagineComponent = defineComponent({
       return voiceOptions.find(v => v.name === selectedVoice.value) || voiceOptions[0];
     });
 
+    // 中文翻譯對照表
+    const chineseTranslations = {
+      // 角色翻譯
+      'dog': '狗',
+      'cat': '貓',
+      'hamster': '倉鼠',
+      'fox': '狐狸',
+      'bear': '熊',
+      'panda': '熊貓',
+      'lion': '獅子',
+      'sloth': '樹懶',
+      'skunk': '臭鼬',
+      'owl': '貓頭鷹',
+      'peacock': '孔雀',
+      'parrot': '鸚鵡',
+      'frog': '青蛙',
+      'trex': '暴龍',
+      
+      // 身份翻譯
+      'Pirate': '海盜',
+      'Cowboy': '牛仔',
+      'Surfer': '衝浪客',
+      'Royalty': '皇室',
+      'Robot': '機器人',
+      'Clown': '小丑',
+      'Nerd': '書呆子',
+      
+      // 心情翻譯
+      'Happy': '快樂',
+      'Sad': '悲傷',
+      'Angry': '憤怒',
+      'Terrified': '恐懼',
+      'Tired': '疲倦',
+      'Amazed': '驚奇',
+      'Relieved': '鬆了一口氣',
+      
+      // 風格翻譯
+      'Reading': '朗讀',
+      'Yelling': '大叫',
+      'Performing': '表演',
+      'Dramatic': '戲劇化',
+      'Whispering': '耳語',
+      'Speaking': '說話',
+      'Poetry': '詩歌'
+    };
+
+    // 翻譯函式
+    const translateToChineseDisplay = (key: string) => {
+      return chineseTranslations[key as keyof typeof chineseTranslations] || key;
+    };
+
+    const characterDescription = computed(() => {
+      const style = translateToChineseDisplay(selectedStyle.value);
+      const mood = translateToChineseDisplay(selectedMood.value);
+      const character = translateToChineseDisplay(selectedCharacter.value);
+      const role = selectedRole.value ? translateToChineseDisplay(selectedRole.value) : '';
+      
+      return `以${style}的風格，像${mood}的${character}${ role ? '，來扮演' + role : '' }`;
+    });
+
     const isEverythingSelected = computed(() => {
       return (selectedStyle.value && selectedMood.value && selectedCharacter.value && selectedRole.value);
     });
@@ -2028,6 +2088,7 @@ Current time is ${new Date().toLocaleTimeString()}. Just say a very short introd
       characterImageRef,
       characterVoiceDescription,
       characterVisualDescription,
+      characterDescription,
       selectedVoice,
       selectedRole,
       selectedMood,
@@ -2109,7 +2170,7 @@ Current time is ${new Date().toLocaleTimeString()}. Just say a very short introd
                        class="p-4 hover:bg-black/10 cursor-pointer border-b last:border-b-0">
                     <div>{{ voice.name }}</div>
                     <div class="text-lg opacity-70">
-                      <span v-if="voice.pitch">{{ voice.pitch }} pitch &middot; </span>{{ voice.style }}
+                      <span v-if="voice.pitch">{{ voice.pitch }} 音調 &middot; </span>{{ voice.style }}
                     </div>
                   </div>
                 </div>
@@ -2473,7 +2534,7 @@ Current time is ${new Date().toLocaleTimeString()}. Just say a very short introd
                   />
                 </div>
                 <div v-if="isEverythingSelected" class="hidden lg:block lowercase text-2xl bg-black/10 p-8 rounded-2xl text-center lg:relative">
-                  {{ selectedStyle }} 像一個 {{ selectedMood }} 的 {{ selectedCharacter }} {{ selectedRole ? '扮演著 ' + selectedRole + ' 的身份' : '' }}
+                  {{ characterDescription }}
                 </div>
                 <div v-else class="text-2xl bg-black/10 p-8 rounded-2xl text-center">
                   {{ selectionPrompt }}
@@ -2541,9 +2602,9 @@ Current time is ${new Date().toLocaleTimeString()}. Just say a very short introd
     </div>
 
     <div v-if="(!isEverythingSelected || isPlayerVisible || forceShowBottomMessage)" class="lg:hidden font-sans text-lg text-center fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-black/60 backdrop-blur-lg text-white px-6 py-3 rounded-3xl z-50 transition-opacity duration-30">
-      <template v-if="isInSession && isPlayerVisible">{{ selectedStyle }} 像一個 {{ selectedMood }} 的 {{ selectedCharacter }} {{ selectedRole ? '扮演著 ' + selectedRole + ' 的身份' : '' }}</template>
+      <template v-if="isInSession && isPlayerVisible">{{ characterDescription }}</template>
       <template v-else-if="!isEverythingSelected">{{ selectionPrompt }}</template>
-      <template v-else-if="forceShowBottomMessage">{{ selectedStyle }} 像一個 {{ selectedMood }} 的 {{ selectedCharacter }} {{ selectedRole ? '扮演著 ' + selectedRole + ' 的身份' : '' }}</template>
+      <template v-else-if="forceShowBottomMessage">{{ characterDescription }}</template>
     </div>
   `
 });
