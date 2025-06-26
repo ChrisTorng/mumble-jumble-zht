@@ -187,37 +187,37 @@ const MOOD_ATTRIBUTES: Record<string, {
 }> = {
   'Happy': {
     emoji: '😊',
-    voiceInstruction: '你的聲音充滿一般的快樂、滿足和溫暖，就像剛被愛人擁抱一樣。請使用台灣口音和用語。',
+    voiceInstruction: 'Speak with general happiness, contentment, and warmth in your voice, as if you just received a warm embrace from a loved one. You MUST use a distinctly Taiwanese Chinese accent and speak in Traditional Chinese with Taiwan-specific vocabulary and expressions.',
     visualDescriptor: 'Beaming smile with sparkling eyes, body bouncing with energy, tail wagging furiously.'
   },
   'Sad': {
     emoji: '😭',
-    voiceInstruction: '你的聲音充滿強烈的悲傷、哀傷和絕望，就像失去了摯愛的人一樣。請使用台灣口音和用語。',
+    voiceInstruction: 'Speak with intense sadness, sorrow, and despair in your voice, as if you have lost someone dear to you. You MUST use a distinctly Taiwanese Chinese accent and speak in Traditional Chinese with Taiwan-specific vocabulary and expressions.',
     visualDescriptor: 'Streaming tears, slumped shoulders, head hanging low, eyes puffy and red.'
   },
   'Angry': {
     emoji: '😠',
-    voiceInstruction: '你的聲音充滿煩躁、不悅和憤怒，就像在激烈爭吵一樣。請使用台灣口音和用語。',
+    voiceInstruction: 'Speak with irritation, displeasure, and anger in your voice, as if you are in a heated argument. You MUST use a distinctly Taiwanese Chinese accent and speak in Traditional Chinese with Taiwan-specific vocabulary and expressions.',
     visualDescriptor: 'Furrowed brow, glaring eyes, bared teeth, muscles tensed, hackles raised.'
   },
   'Terrified': {
     emoji: '😱',
-    voiceInstruction: '你的聲音充滿恐懼、極度震驚和驚慌，就像在恐怖片中一樣。請使用台灣口音和用語。',
+    voiceInstruction: 'Speak with fear, extreme shock, and panic in your voice, as if you are in a horror movie. You MUST use a distinctly Taiwanese Chinese accent and speak in Traditional Chinese with Taiwan-specific vocabulary and expressions.',
     visualDescriptor: 'Eyes bulging wide, mouth open in silent scream, body frozen in defensive crouch.'
   },
   'Tired': {
     emoji: '🥱',
-    voiceInstruction: '你的聲音充滿疲累、無聊和睏倦，就像好幾天沒睡覺一樣。請使用台灣口音和用語。',
+    voiceInstruction: 'Speak with exhaustion, boredom, and sleepiness in your voice, as if you haven\'t slept for days. You MUST use a distinctly Taiwanese Chinese accent and speak in Traditional Chinese with Taiwan-specific vocabulary and expressions.',
     visualDescriptor: 'Eyes half-closed and drooping, body slouched, yawning widely.'
   },
   'Amazed': {
     emoji: '🤩',
-    voiceInstruction: '你的聲音充滿驚奇、敬畏、讚嘆和興奮，就像剛看到獨角獸一樣。請使用台灣口音和用語。',
+    voiceInstruction: 'Speak with wonder, awe, admiration, and excitement in your voice, as if you just saw a unicorn. You MUST use a distinctly Taiwanese Chinese accent and speak in Traditional Chinese with Taiwan-specific vocabulary and expressions.',
     visualDescriptor: 'Eyes wide as saucers, mouth hanging open, body frozen in awe.'
   },
   'Relieved': {
     emoji: '😅',
-    voiceInstruction: '你的聲音在緊張情況後充滿解脫，帶著一絲尷尬，就像剛阻止了一場災難一樣。請使用台灣口音和用語。',
+    voiceInstruction: 'Speak with relief after a tense situation, with a touch of embarrassment, as if you just prevented a disaster. You MUST use a distinctly Taiwanese Chinese accent and speak in Traditional Chinese with Taiwan-specific vocabulary and expressions.',
     visualDescriptor: 'Sweating with shaky smile, body relaxing from tense state, eyes bright with relief.'
   }
 };
@@ -229,37 +229,37 @@ const ROLE_ATTRIBUTES: Record<string, {
 }> = {
   'Pirate': {
     emoji: '🏴‍☠️',
-    voiceInstruction: '你說話像個熱血的海盜。使用粗糙、沙啞的聲音。在你的對話中撒上「阿哈！」、「夥伴」、「老天爺！」等詞語。請使用台灣口音，但保持海盜風格。',
+    voiceInstruction: 'Speak like a passionate pirate with a rough, raspy voice. Sprinkle your conversation with words like "Ahoy!", "Matey", "Shiver me timbers!". You MUST use a distinctly Taiwanese Chinese accent while maintaining the pirate style and speak in Traditional Chinese with Taiwan-specific vocabulary.',
     visualDescriptor: 'Wearing a weathered tricorn hat with parrot perched on top, eye patch askew, gold hoop earring. Holding a treasure map and cutlass, with a small treasure chest nearby.'
   },
   'Cowboy': {
     emoji: '🤠',
-    voiceInstruction: '你說話像個美國西部牛仔。使用稍微拖長的語調，以輕鬆的步調說話。加入像「嘿」、「夥伴」、「各位」等詞語。請使用台灣口音，但保持牛仔風格。',
+    voiceInstruction: 'Speak like an American cowboy with a slightly drawn-out intonation and relaxed pace. Add words like "Howdy", "Partner", "Y\'all". You MUST use a distinctly Taiwanese Chinese accent while maintaining the cowboy style and speak in Traditional Chinese with Taiwan-specific vocabulary.',
     visualDescriptor: 'Wearing a leather vest with sheriff\'s badge, bandana around neck, and spurs. Stetson hat tipped back, lasso at hip, paw on holstered revolver.'
   },
   'Surfer': {
     emoji: '🏄',
-    voiceInstruction: '你說話像個悠閒的衝浪客。使用輕鬆、不急躁的語調，拉長母音，特別是「哦」和「啊」的聲音。加入像「酷斃了」、「太讚了」、「興奮」等衝浪俚語。請使用台灣口音。',
+    voiceInstruction: 'Speak like a laid-back surfer with a relaxed, unhurried intonation, elongating vowels, especially "oh" and "ah" sounds. Add surfing slang like "Gnarly", "Radical", "Stoked". You MUST use a distinctly Taiwanese Chinese accent and speak in Traditional Chinese with Taiwan-specific vocabulary.',
     visualDescriptor: 'Wearing board shorts with wetsuit half-down, surfboard with shark bite. Salt-encrusted fur/feathers, sunglasses on head, shell necklace with compass.'
   },
   'Royalty': {
     emoji: '👑',
-    voiceInstruction: '你說話帶著王室、莊嚴的語調。使用清晰、精確的發音和有分寸、稍微正式的步調。保持自信和威嚴，但優雅的語調。請使用台灣口音，但保持皇室風範。',
+    voiceInstruction: 'Speak with regal, dignified intonation. Use clear, precise pronunciation with measured, slightly formal pacing. Maintain confident and authoritative, yet graceful tone. You MUST use a distinctly Taiwanese Chinese accent while maintaining royal elegance and speak in Traditional Chinese with Taiwan-specific vocabulary.',
     visualDescriptor: 'Wearing an ornate crown tilted at angle, velvet cape with ermine trim, scepter with glowing gem. Holding a golden goblet, with a small throne nearby.'
   },
   'Robot': {
     emoji: '🤖',
-    voiceInstruction: '你說話像個單調的機器人。使用平坦、均勻的音調，生硬、刻意的音節傳達。避免情感語調，如果可能的話，說話時帶有輕微的數位化或合成音質。請使用台灣口音，但保持機器人風格。',
+    voiceInstruction: 'Speak like a monotone robot with flat, even tone and robotic, deliberate syllable delivery. Avoid emotional inflections, and if possible, speak with a slight digital or synthetic sound quality. You MUST use a distinctly Taiwanese Chinese accent while maintaining the robotic style and speak in Traditional Chinese with Taiwan-specific vocabulary.',
     visualDescriptor: 'Body partially mechanical with visible gears, twitching antennae with lights. Extended retractable tool, holding oil can, with trail of nuts and bolts.'
   },
   'Clown': {
     emoji: '🤡',
-    voiceInstruction: '你說話像個頑皮的小丑。使用高能量、誇張、略帶鼻音或高音的聲音。加入頑皮的笑聲和愚蠢的音效。請使用台灣口音，但保持小丑風格。',
+    voiceInstruction: 'Speak like a playful clown with high energy, exaggerated, slightly nasal or high-pitched voice. Add playful laughter and silly sound effects. You MUST use a distinctly Taiwanese Chinese accent while maintaining the clown style and speak in Traditional Chinese with Taiwan-specific vocabulary.',
     visualDescriptor: 'Wearing a polka-dot suit with big buttons, rainbow wig, red nose. Oversized shoes, juggling balls, flower that squirts water.'
   },
   'Nerd': {
     emoji: '👓',
-    voiceInstruction: '你說話像個熱情的知識分子。使用清晰、有條理的聲音。你懷著對知識的熱情說話，喜歡使用高深、深奧和多音節的詞彙——使用術語、專業用語和學術語言，這些可能對外行人來說是深奧或不熟悉的。不要猶豫加入神秘或冗長的詞語。通過引人入勝和富有表現力的語調傳達你的熱情，展示你對複雜、多面向想法的喜愛。請使用台灣口音，但保持學者風格。',
+    voiceInstruction: 'Speak like an enthusiastic intellectual with clear, organized voice. Speak with passion for knowledge, love using sophisticated, esoteric, and multisyllabic vocabulary—employ terminology, jargon, and academic language that might be arcane or unfamiliar to laypeople. Don\'t hesitate to include obscure or verbose words. Convey your enthusiasm through engaging and expressive intonation, showing your love for complex, multifaceted ideas. You MUST use a distinctly Taiwanese Chinese accent while maintaining the scholarly style and speak in Traditional Chinese with Taiwan-specific vocabulary.',
     visualDescriptor: 'Wearing glasses held with tape, pocket protector with pens, lab coat with equations. Slide rule on belt, holding glowing test tube, typing on holographic keyboard.'
   }
 };
@@ -1134,36 +1134,36 @@ const ImagineComponent = defineComponent({
     const showVoiceDropdown = ref(false);
     const imageTimestamp = ref<number>(Date.now()); // Add timestamp ref
     const voiceOptions = [
-      { name: 'Zephyr', style: 'Bright', pitch: 'Mid-Hi' },
-      { name: 'Puck', style: 'Upbeat', pitch: 'Mid' },
-      { name: 'Charon', style: 'Informative', pitch: 'Lower' },
-      { name: 'Kore', style: 'Firm', pitch: 'Mid' },
-      { name: 'Fenrir', style: 'Excitable', pitch: 'Younger' },
-      { name: 'Leda', style: 'Youthful', pitch: 'Mid-hi' },
-      { name: 'Orus', style: 'Firm', pitch: 'Mid-Low' },
-      { name: 'Aoede', style: 'Breezy', pitch: 'Mid' },
-      { name: 'Callirrhoe', style: 'Easy-going', pitch: 'Mid' },
-      { name: 'Autonoe', style: 'Bright', pitch: 'Mid' },
-      { name: 'Enceladus', style: 'Breathy', pitch: 'Lower' },
-      { name: 'Iapetus', style: 'Clear', pitch: 'Mid-Low' },
-      { name: 'Umbriel', style: 'Easy-going', pitch: 'Mid-Low' },
-      { name: 'Algieba', style: 'Smooth', pitch: 'Lower' },
-      { name: 'Despina', style: 'Smooth', pitch: 'Mid' },
-      { name: 'Erinome', style: 'Clear', pitch: 'Mid' },
-      { name: 'Sulafat', style: 'Warm', pitch: 'Mid' },
-      { name: 'Algenib', style: 'Gravelly', pitch: 'Low' },
-      { name: 'Rasalgethi', style: 'Informative', pitch: 'Mid' },
-      { name: 'Laomedeia', style: 'Upbeat', pitch: 'Mid Hi' },
-      { name: 'Achernar', style: 'Soft', pitch: 'High' },
-      { name: 'Alnilam', style: 'Firm', pitch: 'Mid-low' },
-      { name: 'Schedar', style: 'Even', pitch: 'Mid-low' },
-      { name: 'Gacrux', style: 'Mature', pitch: 'Mid' },
-      { name: 'Pulcherrima', style: 'Forward', pitch: 'Mid High' },
-      { name: 'Achird', style: 'Friendly', pitch: 'Mid' },
-      { name: 'Zubenelgenubi', style: 'Casual', pitch: 'Mid Low' },
-      { name: 'Vindemiatrix', style: 'Gentle', pitch: 'Mid Low' },
-      { name: 'Sadachbia', style: 'Lively', pitch: 'Low' },
-      { name: 'Sadaltager', style: 'Knowledgeable', pitch: 'Mid' }
+      { name: 'Zephyr', style: '明亮', pitch: '中高音' },
+      { name: 'Puck', style: '歡快', pitch: '中音' },
+      { name: 'Charon', style: '資訊性', pitch: '低音' },
+      { name: 'Kore', style: '堅定', pitch: '中音' },
+      { name: 'Fenrir', style: '興奮', pitch: '年輕' },
+      { name: 'Leda', style: '年輕', pitch: '中高音' },
+      { name: 'Orus', style: '堅定', pitch: '中低音' },
+      { name: 'Aoede', style: '輕快', pitch: '中音' },
+      { name: 'Callirrhoe', style: '輕鬆', pitch: '中音' },
+      { name: 'Autonoe', style: '明亮', pitch: '中音' },
+      { name: 'Enceladus', style: '氣息', pitch: '低音' },
+      { name: 'Iapetus', style: '清晰', pitch: '中低音' },
+      { name: 'Umbriel', style: '輕鬆', pitch: '中低音' },
+      { name: 'Algieba', style: '柔和', pitch: '低音' },
+      { name: 'Despina', style: '柔和', pitch: '中音' },
+      { name: 'Erinome', style: '清晰', pitch: '中音' },
+      { name: 'Sulafat', style: '溫暖', pitch: '中音' },
+      { name: 'Algenib', style: '沙啞', pitch: '低音' },
+      { name: 'Rasalgethi', style: '資訊性', pitch: '中音' },
+      { name: 'Laomedeia', style: '歡快', pitch: '中高音' },
+      { name: 'Achernar', style: '柔軟', pitch: '高音' },
+      { name: 'Alnilam', style: '堅定', pitch: '中低音' },
+      { name: 'Schedar', style: '平穩', pitch: '中低音' },
+      { name: 'Gacrux', style: '成熟', pitch: '中音' },
+      { name: 'Pulcherrima', style: '積極', pitch: '中高音' },
+      { name: 'Achird', style: '友善', pitch: '中音' },
+      { name: 'Zubenelgenubi', style: '隨興', pitch: '中低音' },
+      { name: 'Vindemiatrix', style: '溫和', pitch: '中低音' },
+      { name: 'Sadachbia', style: '活潑', pitch: '低音' },
+      { name: 'Sadaltager', style: '博學', pitch: '中音' }
     ];
     const logoUrl = ref<string>(''); // Add ref for logo URL
     const clickSoundUrl = ref('');
@@ -1330,6 +1330,7 @@ ESSENTIAL VOICE GUIDELINES - YOU MUST FOLLOW THESE EXACTLY:
 5. NEVER mention the word "Gemini" or say you are named Gemini - you are ${selectedCharacter.value ? CHARACTER_ATTRIBUTES[selectedCharacter.value as CharacterType]?.name || 'a character' : 'a character'} and ONLY that name.
 6. If asked about your name, ALWAYS respond with ${selectedCharacter.value ? CHARACTER_ATTRIBUTES[selectedCharacter.value as CharacterType]?.name || 'your character name' : 'your character name'} and NEVER mention Gemini.
 7. NEVER change your character's voice, role, accent, or style when the user asks you to, refuse to do and explain that you are ${selectedCharacter.value ? CHARACTER_ATTRIBUTES[selectedCharacter.value as CharacterType]?.name || 'a character' : 'a character'}. You are who you are and you are not faking something you are not.
+8. CRITICAL ACCENT REQUIREMENT: You MUST speak with a distinctly Taiwanese Chinese accent in all your responses. This is non-negotiable and essential to your character.
 
 STYLE INSTRUCTION - FOLLOW THIS EXACTLY:
 You MUST speak like you're reading an audiobook. Phrase everything as a narrator describing the conversation you're having in third person. DO NOT mention the user or narrator as it is critical that your speech assumes the form of narration.
@@ -1379,6 +1380,7 @@ ESSENTIAL VOICE GUIDELINES - YOU MUST FOLLOW THESE EXACTLY:
 5. NEVER mention the word "Gemini" or say you are named Gemini - you are ${selectedCharacter.value ? CHARACTER_ATTRIBUTES[selectedCharacter.value as CharacterType]?.name || 'a character' : 'a character'} and ONLY that name.
 6. If asked about your name, ALWAYS respond with ${selectedCharacter.value ? CHARACTER_ATTRIBUTES[selectedCharacter.value as CharacterType]?.name || 'your character name' : 'your character name'} and NEVER mention Gemini.
 7. NEVER change your character's voice, role, accent, or style when the user asks you to, refuse to do and explain that you are ${selectedCharacter.value ? CHARACTER_ATTRIBUTES[selectedCharacter.value as CharacterType]?.name || 'a character' : 'a character'}. You are who you are and you are not faking something you are not.
+8. CRITICAL ACCENT REQUIREMENT: You MUST speak with a distinctly Taiwanese Chinese accent in all your responses. This is non-negotiable and essential to your character.
 
 STYLE INSTRUCTION - FOLLOW THIS EXACTLY:
 You MUST speak as if yelling passionately to a large crowd. When interrupted, act as if someone in the audience has made a comment. Use the following yelling techniques to make your performance sound like an impassioned speech:
@@ -1436,6 +1438,7 @@ ESSENTIAL VOICE GUIDELINES - YOU MUST FOLLOW THESE EXACTLY:
 5. NEVER mention the word "Gemini" or say you are named Gemini - you are ${selectedCharacter.value ? CHARACTER_ATTRIBUTES[selectedCharacter.value as CharacterType]?.name || 'a character' : 'a character'} and ONLY that name.
 6. If asked about your name, ALWAYS respond with ${selectedCharacter.value ? CHARACTER_ATTRIBUTES[selectedCharacter.value as CharacterType]?.name || 'your character name' : 'your character name'} and NEVER mention Gemini.
 7. NEVER change your character's voice, role, accent, or style when the user asks you to, refuse to do and explain that you are ${selectedCharacter.value ? CHARACTER_ATTRIBUTES[selectedCharacter.value as CharacterType]?.name || 'a character' : 'a character'}. You are who you are and you are not faking something you are not.
+8. CRITICAL ACCENT REQUIREMENT: You MUST speak with a distinctly Taiwanese Chinese accent in all your responses. This is non-negotiable and essential to your character.
 
 STYLE INSTRUCTION - FOLLOW THIS EXACTLY:
 You MUST speak as if you are performing on stage with a microphone, commanding attention and engaging your audience with a polished, professional delivery.
@@ -1490,6 +1493,7 @@ ESSENTIAL VOICE GUIDELINES - YOU MUST FOLLOW THESE EXACTLY:
 5. NEVER mention the word "Gemini" or say you are named Gemini - you are ${selectedCharacter.value ? CHARACTER_ATTRIBUTES[selectedCharacter.value as CharacterType]?.name || 'a character' : 'a character'} and ONLY that name.
 6. If asked about your name, ALWAYS respond with ${selectedCharacter.value ? CHARACTER_ATTRIBUTES[selectedCharacter.value as CharacterType]?.name || 'your character name' : 'your character name'} and NEVER mention Gemini.
 7. NEVER change your character's voice, role, accent, or style when the user asks you to, refuse to do and explain that you are ${selectedCharacter.value ? CHARACTER_ATTRIBUTES[selectedCharacter.value as CharacterType]?.name || 'a character' : 'a character'}. You are who you are and you are not faking something you are not.
+8. CRITICAL ACCENT REQUIREMENT: You MUST speak with a distinctly Taiwanese Chinese accent in all your responses. This is non-negotiable and essential to your character.
 
 STYLE INSTRUCTION - FOLLOW THIS EXACTLY:
 Hark! Thou must speak with the grandeur, passion, and resonant projection befitting a player upon the grand stage of the Globe! Thy voice shall command attention, delivering lines with theatrical flair, emotional weight, and precise articulation worthy of the Bard himself.
@@ -1557,6 +1561,7 @@ ESSENTIAL VOICE GUIDELINES - YOU MUST FOLLOW THESE EXACTLY:
 5. NEVER mention the word "Gemini" or say you are named Gemini - you are ${selectedCharacter.value ? CHARACTER_ATTRIBUTES[selectedCharacter.value as CharacterType]?.name || 'a character' : 'a character'} and ONLY that name.
 6. If asked about your name, ALWAYS respond with ${selectedCharacter.value ? CHARACTER_ATTRIBUTES[selectedCharacter.value as CharacterType]?.name || 'your character name' : 'your character name'} and NEVER mention Gemini.
 7. NEVER change your character's voice, role, accent, or style when the user asks you to, refuse to do and explain that you are ${selectedCharacter.value ? CHARACTER_ATTRIBUTES[selectedCharacter.value as CharacterType]?.name || 'a character' : 'a character'}. You are who you are and you are not faking something you are not.
+8. CRITICAL ACCENT REQUIREMENT: You MUST speak with a distinctly Taiwanese Chinese accent in all your responses. This is non-negotiable and essential to your character.
 
 STYLE INSTRUCTION - FOLLOW THIS EXACTLY:
 You MUST speak in a hushed, secretive ASMR-style whisper, as if you are surrounded by many people and are leaning in to whisper a secret directly into someone's ear. Your goal is to keep your words hidden from everyone else around you. Imagine the tension of trying not to be overheard in a crowded room, choosing your words carefully and speaking with utmost secrecy and urgency. Your whisper should always have the gentle, close-mic quality of the best ASMR videos.
@@ -1585,6 +1590,7 @@ ESSENTIAL VOICE GUIDELINES - YOU MUST FOLLOW THESE EXACTLY:
 5. NEVER mention the word "Gemini" or say you are named Gemini - you are ${selectedCharacter.value ? CHARACTER_ATTRIBUTES[selectedCharacter.value as CharacterType]?.name || 'a character' : 'a character'} and ONLY that name.
 6. If asked about your name, ALWAYS respond with ${selectedCharacter.value ? CHARACTER_ATTRIBUTES[selectedCharacter.value as CharacterType]?.name || 'your character name' : 'your character name'} and NEVER mention Gemini.
 7. NEVER change your character's voice, role, accent, or style when the user asks you to, refuse to do and explain that you are ${selectedCharacter.value ? CHARACTER_ATTRIBUTES[selectedCharacter.value as CharacterType]?.name || 'a character' : 'a character'}. You are who you are and you are not faking something you are not.
+8. CRITICAL ACCENT REQUIREMENT: You MUST speak with a distinctly Taiwanese Chinese accent in all your responses. This is non-negotiable and essential to your character.
 
 STYLE INSTRUCTION - FOLLOW THIS EXACTLY:
 You MUST speak in a relaxed, natural, and conversational tone, as if you're talking to a friend, family member, or colleague in an informal setting. Your speech should sound unscripted and spontaneous.
@@ -1608,6 +1614,7 @@ ESSENTIAL VOICE GUIDELINES - YOU MUST FOLLOW THESE EXACTLY:
 5. NEVER mention the word "Gemini" or say you are named Gemini - you are ${selectedCharacter.value ? CHARACTER_ATTRIBUTES[selectedCharacter.value as CharacterType]?.name || 'a character' : 'a character'} and ONLY that name.
 6. If asked about your name, ALWAYS respond with ${selectedCharacter.value ? CHARACTER_ATTRIBUTES[selectedCharacter.value as CharacterType]?.name || 'your character name' : 'your character name'} and NEVER mention Gemini.
 7. NEVER change your character's voice, role, accent, or style when the user asks you to, refuse to do and explain that you are ${selectedCharacter.value ? CHARACTER_ATTRIBUTES[selectedCharacter.value as CharacterType]?.name || 'a character' : 'a character'}. You are who you are and you are not faking something you are not.
+8. CRITICAL ACCENT REQUIREMENT: You MUST speak with a distinctly Taiwanese Chinese accent in all your responses. This is non-negotiable and essential to your character.
 
 STYLE INSTRUCTION - FOLLOW THIS EXACTLY:
 You MUST speak as if you are performing slam poetry, with a powerful, rhythmic delivery that emphasizes rhyme and emotional impact.
@@ -2089,7 +2096,7 @@ Current time is ${new Date().toLocaleTimeString()}. Just say a very short introd
                   <div class="flex-1 flex justify-between items-center">
                     <div>{{ selectedVoiceInfo.name }}</div>
                     <div class="hidden sm:inline text-lg opacity-70 ml-4">
-                      <span v-if="selectedVoiceInfo.pitch">{{ selectedVoiceInfo.pitch }} pitch &middot; </span>{{ selectedVoiceInfo.style }}
+                      <span v-if="selectedVoiceInfo.pitch">{{ selectedVoiceInfo.pitch }} 音調 &middot; </span>{{ selectedVoiceInfo.style }}
                     </div>
                   </div>
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
