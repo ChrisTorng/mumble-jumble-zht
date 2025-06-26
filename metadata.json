@@ -1,6 +1,6 @@
 {
-  "name": "Mumble Jumble",
-  "description": "A playground to discover the range of creative voices that the Gemini native audio out has to offer.",
+  "name": "Mumble Jumble 繁體中文",
+  "description": "在這個遊樂場中，你可以體驗並探索 Gemini 原生語音輸出的豐富創意聲線。",
   "requestFramePermissions": [
     "microphone"
   ],
